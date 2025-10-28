@@ -19,30 +19,30 @@ int main() {
         strcpy(start, operand);
     }
 
-    printf("H^%s^%s^%d\nT^00%s^", label, start, len, start);
-    fscanf(fint, "%s%s%s%s", add, label, mne, operand);
+    printf("H^%s^%s^%d\nT^00%s^", label, start, len, start); //write header record
+    fscanf(fint, "%s%s%s%s", add, label, mne, operand); //read next line INTER
 
     while (strcmp(mne, "END") != 0) {
-        fscanf(ftab, "%s%s", opmne, op);
+        fscanf(ftab, "%s%s", opmne, op); // read optab
         while (!feof(ftab)) {
-            if (strcmp(mne, opmne) == 0) {
-                fclose(ftab);
+            if (strcmp(mne, opmne) == 0) { // opcode in inter found and is equal to optab mnemonic
+                fclose(ftab); // close optab file   
                 fscanf(fsym, "%s%s", symtab, symadd);
                 while (!feof(fsym)) {
-                    if (strcmp(operand, symtab) == 0) {
+                    if (strcmp(operand, symtab) == 0) { // operand in inter found and is equal to symtab symbol
                         printf("%s%s^", op, symadd);
                         break;
                     } else {
-                        fscanf(fsym, "%s%s", symtab, symadd);
+                        fscanf(fsym, "%s%s", symtab, symadd);      //  read next symbol from symtab
                     }
                 }
                 break;
             } else {
-                fscanf(ftab, "%s%s", opmne, op);
+                fscanf(ftab, "%s%s", opmne, op); // read next optab entry
             }
-        }
+        } // end of while optab
 
-        if ((strcmp(mne, "BYTE") == 0) || (strcmp(mne, "WORD") == 0)) {
+        if ((strcmp(mne, "BYTE") == 0) || (strcmp(mne, "WORD") == 0)) { // if mnemonic of the file inter is BYTE or WORD
             if (strcmp(mne, "WORD") == 0) {
                 printf("0000%s^", operand);
             } else {
@@ -54,8 +54,8 @@ int main() {
             }
         }
 
-        fscanf(fint, "%s%s%s%s", add, label, mne, operand);
-        ftab = fopen("optab.txt", "r");
+        fscanf(fint, "%s%s%s%s", add, label, mne, operand); // read next line INTER
+        ftab = fopen("optab.txt", "r"); // reopen optab file
         fseek(ftab, SEEK_SET, 0);
     }
 
