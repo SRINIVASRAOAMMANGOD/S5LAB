@@ -1,0 +1,25 @@
+DATA SEGMENT
+MSG1 DB "HEELLO$"
+MSG2 DB "WORLD$"
+DATA ENDS 
+
+CODE SEGMENT
+ASSUME CS:CODE,DS:DATA
+START:
+    MOV AX, DATA
+    MOV DS, AX
+
+    MOV DX, OFFSET MSG1
+    MOV AH, 09H
+    INT 21H
+
+    MOV DX, OFFSET MSG2
+    MOV AH, 09H
+    INT 21H
+
+    MOV AH, 4CH      ; Terminate program
+    MOV AL, 00       ; Exit code 0
+    INT 21H
+
+CODE ENDS
+END START
