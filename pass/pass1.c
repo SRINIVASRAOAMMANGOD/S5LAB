@@ -30,8 +30,8 @@ while(strcmp(opcode,"END")!=0){
 			locctr+=3;
 			break;
 		}
-fscanf(fp2,"%s\t%s",mnemonics,code);		
-}	
+	fscanf(fp2,"%s\t%s",mnemonics,code);		
+	}	
 
 
 if(strcmp(opcode,"WORD")==0){
