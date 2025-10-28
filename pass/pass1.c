@@ -13,7 +13,7 @@ int main(){
     if(strcmp(opcode,"START")==0){
         start=atoi(operand);
 		locctr=start;
-		fprintf(fp4,"%s\t%s\t%s\n",label,opcode,operand);
+		fprintf(fp4,"*\t%s\t%s\t%s\n",label,opcode,operand);
 		fscanf(fp1,"%s\t%s\t%s",label,opcode,operand);
    }
 else locctr=0;
