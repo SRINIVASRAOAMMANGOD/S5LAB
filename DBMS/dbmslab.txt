@@ -175,7 +175,9 @@ end if;
 end//
 DELIMITER ;
 
-
+mysql> select d.dept_name , count(e.emp_name),AVG(e.salary) from department d JOIN employee e ON e.dept_no=d.dept_no;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'lab.d.dept_name'; this is incompatible with sql_mode=only_full_group_by
+mysql> select d.dept_name , count(e.emp_name),AVG(e.salary) from department d JOIN employee e ON e.dept_no=d.dept_no GROUP BY d.dept_name;
 
 
 
