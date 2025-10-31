@@ -19,20 +19,19 @@ void main() {
         scanf("%d", &f[i].size);
         printf("Enter block numbers:");
         for(j = 1; j <= f[i].size; j++) {
-            scanf("%d\n", &f[i].block[j]);
+            scanf("%d", &f[i].block[j]);
         }
     }
     
-    printf("Start\tsize\tblock\n");
+    printf("\nFile\tStart\tSize\tBlocks\n");
+    printf("------------------------------------\n");
     
     for(i = 0; i < n; i++) {
-        printf("File %d:\t", i+1);
-        printf("%d\t%d\t", f[i].start, f[i].size);
-        for(j = 1; j <= f[i].size-1; j++) {
+        printf("%d\t%d\t%d\t", i+1, f[i].start, f[i].size);
+        for(j = 0; j < f[i].size; j++) {
             printf("%d--->", f[i].block[j]);
         }
-        printf("%d", f[i].block[j]);
-        printf("\n");
+        printf("%d\n", f[i].block[f[i].size]);
     }
    
 }
