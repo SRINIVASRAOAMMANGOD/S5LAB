@@ -44,8 +44,8 @@ int main() {
                 else  
                     P[i].Temp = P[i - 1].CT;
         
-                P[i].CT = P[i].Temp + P[i].Bt;
-                P[i].Tat = P[i].CT - P[i].at;
+                P[i].CT = P[i].Temp + P[i].Bt; //use temp to calculate ct
+                P[i].Tat = P[i].CT - P[i].at; // use at to calculate tat
                 P[i].Wt = P[i].Tat - P[i].Bt;
             }
     for (i = 0; i < n - 1; i++) {
