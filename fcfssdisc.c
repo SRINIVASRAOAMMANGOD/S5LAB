@@ -23,7 +23,6 @@ printf("Sequence: %d\t",start);
 for(i=0;i<n;i++) 
 { 
 printf("-> %d\t",RQ[i]);
-
 } 
 return 0; 
 }
